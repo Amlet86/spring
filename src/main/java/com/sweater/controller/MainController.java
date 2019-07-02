@@ -1,4 +1,4 @@
-package com.sweater;
+package com.sweater.controller;
 
 import com.sweater.domain.Message;
 import com.sweater.repos.MessageRepo;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
 
     @Autowired
     private MessageRepo messageRepo;
@@ -43,6 +43,7 @@ public class GreetingController {
     @PostMapping("filter")
     public String filter(@RequestParam String filter, Map<String, Object> model) {
         Iterable<Message> messages;
+
         if (filter != null && !filter.isEmpty()) {
             messages = messageRepo.findByTag(filter);
         } else {
